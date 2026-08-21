@@ -18,6 +18,47 @@ window.addEventListener('scroll', () => {
   lastY = y;
 }, { passive: true });
 
+const BRAND = {
+  monogram: 'assets/brand/dq-monogram.svg',
+  wordmark: 'assets/brand/header-wordmark.svg',
+  signature: 'assets/brand/signature.svg'
+};
+
+function applyBrandAssets() {
+  document.querySelectorAll('link[rel="icon"], link[rel="apple-touch-icon"]').forEach((link) => {
+    link.href = BRAND.monogram;
+  });
+
+  const preloaderMark = document.querySelector('.preloader-monogram');
+  if (preloaderMark) preloaderMark.src = BRAND.monogram;
+
+  const lockup = document.querySelector('.brand-lockup');
+  if (lockup) {
+    lockup.innerHTML = `<img class="brand-wordmark" src="${BRAND.wordmark}" alt="Darla Quinn" />`;
+  }
+
+  const heroSignature = document.querySelector('.hero-signature');
+  if (heroSignature) {
+    const sig = document.createElement('img');
+    sig.className = 'hero-signature hero-signature-asset';
+    sig.src = BRAND.signature;
+    sig.alt = '';
+    sig.setAttribute('aria-hidden', 'true');
+    heroSignature.replaceWith(sig);
+  }
+
+  const closing = document.querySelector('.closing-brand');
+  if (closing) {
+    closing.innerHTML = `<img class="closing-monogram" src="${BRAND.monogram}" alt="" aria-hidden="true" /><img class="closing-signature" src="${BRAND.signature}" alt="Darla Quinn" />`;
+  }
+
+  const footerBrand = document.querySelector('.footer-brand');
+  if (footerBrand) {
+    footerBrand.innerHTML = `<img class="footer-wordmark" src="${BRAND.wordmark}" alt="Darla Quinn" /><p>Independent singer-songwriter<br>Storytelling through music</p>`;
+  }
+}
+applyBrandAssets();
+
 const heroComposition = document.createElement('style');
 heroComposition.textContent = `
   .hero-media {
@@ -35,33 +76,95 @@ document.head.appendChild(heroComposition);
 const brandStyles = document.createElement('style');
 brandStyles.textContent = `
   :root { --brand-gold:#c9ae86; --brand-cream:#f4ebdd; --brand-ink:#171512; }
-  .brand-lockup { display:flex; align-items:center; gap:10px; color:inherit; }
-  .brand-lockup img { width:34px; height:34px; flex:0 0 auto; border-radius:8px; box-shadow:0 0 0 1px rgba(244,235,221,.12); }
-  .brand-words { display:grid; line-height:.76; font-family:"Playfair Display",serif; font-size:18px; letter-spacing:.04em; }
-  .brand-words span:last-child { margin-left:7px; }
-  .brand-lockup:hover .brand-words { letter-spacing:.08em; }
-  .brand-words { transition:letter-spacing .45s cubic-bezier(.22,1,.36,1); }
 
-  .preloader-monogram { width:72px; height:72px; margin:0 auto 18px; border-radius:16px; box-shadow:0 18px 50px rgba(0,0,0,.22); animation:markBreath 1.8s ease-in-out infinite; }
-  @keyframes markBreath { 0%,100%{transform:scale(.97);opacity:.82} 50%{transform:scale(1);opacity:1} }
+  .brand-lockup {
+    display:block;
+    width:clamp(180px, 16vw, 290px);
+    line-height:0;
+  }
+  .brand-lockup .brand-wordmark {
+    width:100% !important;
+    height:auto !important;
+    max-width:none !important;
+    display:block;
+    border-radius:0 !important;
+    box-shadow:none !important;
+    transition:opacity .35s ease, transform .55s cubic-bezier(.22,1,.36,1);
+  }
+  .brand-lockup:hover .brand-wordmark { opacity:.84; transform:translateX(3px); }
 
-  .closing-brand { display:flex; align-items:center; gap:14px; margin-bottom:28px; opacity:.72; }
-  .closing-brand img { width:46px; height:46px; border-radius:10px; }
-  .closing-brand span { font-size:11px; letter-spacing:.28em; font-weight:600; }
+  .preloader-monogram {
+    width:74px !important;
+    height:auto !important;
+    aspect-ratio:auto !important;
+    margin:0 auto 16px;
+    border-radius:0 !important;
+    box-shadow:none !important;
+    animation:markBreath 1.8s ease-in-out infinite;
+  }
+  @keyframes markBreath { 0%,100%{transform:scale(.96);opacity:.72} 50%{transform:scale(1);opacity:1} }
 
-  .footer-brand { display:flex; gap:16px; align-items:flex-start; }
-  .footer-brand img { width:58px; height:58px; border-radius:13px; }
-  .footer-logo { display:block; font-family:"Playfair Display",serif; font-size:26px; letter-spacing:.05em; color:var(--cream); margin-top:1px; }
+  .hero-signature-asset {
+    width:clamp(210px, 25vw, 480px) !important;
+    height:auto !important;
+    right:4.5vw !important;
+    top:14vh !important;
+    transform:none !important;
+    color:unset !important;
+    filter:opacity(.38);
+    object-fit:contain;
+  }
 
-  .featured::before { content:"DQ"; position:absolute; inset:auto 3vw 2vw auto; font-family:"Playfair Display",serif; font-size:clamp(90px,14vw,230px); line-height:.7; color:rgba(248,244,236,.035); pointer-events:none; }
+  .closing-brand {
+    display:flex;
+    align-items:center;
+    gap:18px;
+    margin-bottom:32px;
+    opacity:.82;
+  }
+  .closing-brand .closing-monogram {
+    width:58px !important;
+    height:auto !important;
+    border-radius:0 !important;
+  }
+  .closing-brand .closing-signature {
+    width:clamp(170px,18vw,300px) !important;
+    height:auto !important;
+  }
+
+  .footer-brand {
+    display:flex;
+    flex-direction:column;
+    gap:16px;
+    align-items:flex-start;
+    max-width:420px;
+  }
+  .footer-brand .footer-wordmark {
+    width:clamp(210px,22vw,360px) !important;
+    height:auto !important;
+    border-radius:0 !important;
+  }
+  .footer-brand p { margin:0; }
+
+  .featured::before {
+    content:"DQ";
+    position:absolute;
+    inset:auto 3vw 2vw auto;
+    font-family:"Playfair Display",serif;
+    font-size:clamp(90px,14vw,230px);
+    line-height:.7;
+    color:rgba(248,244,236,.035);
+    pointer-events:none;
+  }
   .featured { position:relative; overflow:hidden; }
 
   @media (max-width:900px){
-    .brand-lockup img{width:30px;height:30px}
-    .brand-words{font-size:15px}
-    .footer-brand img{width:48px;height:48px}
-    .footer-logo{font-size:22px}
-    .preloader-monogram{width:60px;height:60px}
+    .brand-lockup { width:150px; }
+    .preloader-monogram { width:58px !important; }
+    .hero-signature-asset { width:200px !important; top:13vh !important; right:20px !important; }
+    .closing-brand .closing-monogram { width:44px !important; }
+    .closing-brand .closing-signature { width:155px !important; }
+    .footer-brand .footer-wordmark { width:230px !important; }
   }
   @media (prefers-reduced-motion: reduce){ .preloader-monogram{animation:none} }
 `;
