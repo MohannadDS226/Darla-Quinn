@@ -21,7 +21,8 @@ window.addEventListener('scroll', () => {
 const BRAND = {
   monogram: 'https://res.cloudinary.com/vysyrabp/image/upload/v1787341587/darla-quinn/dq-monogram.png',
   wordmark: 'https://res.cloudinary.com/vysyrabp/image/upload/v1787341579/darla-quinn/header-logo.png',
-  favicon: 'https://res.cloudinary.com/vysyrabp/image/upload/v1787341604/darla-quinn/favicon-64.png'
+  favicon: 'https://res.cloudinary.com/vysyrabp/image/upload/v1787341604/darla-quinn/favicon-64.png',
+  signature: 'assets/brand/signature.svg'
 };
 
 function applyBrandAssets() {
@@ -39,6 +40,16 @@ function applyBrandAssets() {
   const lockup = document.querySelector('.brand-lockup');
   if (lockup) {
     lockup.innerHTML = `<img class="brand-wordmark" src="${BRAND.wordmark}" alt="Darla Quinn" />`;
+  }
+
+  const heroSignature = document.querySelector('.hero-signature');
+  if (heroSignature && !heroSignature.classList.contains('hero-signature-asset')) {
+    const sig = document.createElement('img');
+    sig.className = 'hero-signature hero-signature-asset';
+    sig.src = BRAND.signature;
+    sig.alt = '';
+    sig.setAttribute('aria-hidden', 'true');
+    heroSignature.replaceWith(sig);
   }
 
   const closing = document.querySelector('.closing-brand');
@@ -98,6 +109,16 @@ brandStyles.textContent = `
   }
   @keyframes markBreath { 0%,100%{transform:scale(.96);opacity:.72} 50%{transform:scale(1);opacity:1} }
 
+  .hero-signature-asset {
+    width:clamp(260px, 30vw, 560px) !important;
+    height:auto !important;
+    right:4.5vw !important;
+    top:15vh !important;
+    transform:none !important;
+    object-fit:contain;
+    filter:none !important;
+  }
+
   .closing-brand {
     display:flex;
     align-items:center;
@@ -141,6 +162,7 @@ brandStyles.textContent = `
   @media (max-width:900px){
     .brand-lockup { width:150px; }
     .preloader-monogram { width:58px !important; }
+    .hero-signature-asset { width:230px !important; top:13vh !important; right:18px !important; }
     .closing-brand .closing-monogram { width:44px !important; }
     .footer-brand .footer-wordmark { width:230px !important; }
   }
@@ -160,7 +182,7 @@ typeStyles.textContent = `
   body.type-ready .hero .hero-actions { opacity:1; transform:none; transition-delay:.68s; }
   body.type-ready .hero .scroll-cue { opacity:1; transform:none; transition-delay:.9s; }
   .hero-signature { opacity:0; clip-path:inset(0 100% 0 0); transition:opacity 1.4s ease .7s,clip-path 1.8s var(--ease-song) .7s!important; }
-  body.type-ready .hero-signature { opacity:1; clip-path:inset(0 0 0 0); }
+  body.type-ready .hero-signature { opacity:.28; clip-path:inset(0 0 0 0); }
   .type-title { overflow:visible; padding:.12em 0 .14em; margin:-.12em 0 -.14em; }
   .type-title .type-title-inner { display:inline-block; transform:translateY(108%); opacity:.12; filter:blur(4px); transition:transform 1.05s var(--ease-song),opacity .72s ease,filter .9s ease; }
   .type-title.type-in .type-title-inner { transform:translateY(0); opacity:1; filter:blur(0); }
