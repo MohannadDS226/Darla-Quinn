@@ -19,14 +19,18 @@ window.addEventListener('scroll', () => {
 }, { passive: true });
 
 const BRAND = {
-  monogram: 'assets/brand/dq-monogram.svg',
-  wordmark: 'assets/brand/header-wordmark.svg',
-  signature: 'assets/brand/signature.svg'
+  monogram: 'https://res.cloudinary.com/vysyrabp/image/upload/v1787341587/darla-quinn/dq-monogram.png',
+  wordmark: 'https://res.cloudinary.com/vysyrabp/image/upload/v1787341579/darla-quinn/header-logo.png',
+  favicon: 'https://res.cloudinary.com/vysyrabp/image/upload/v1787341604/darla-quinn/favicon-64.png'
 };
 
 function applyBrandAssets() {
-  document.querySelectorAll('link[rel="icon"], link[rel="apple-touch-icon"]').forEach((link) => {
-    link.href = BRAND.monogram;
+  document.querySelectorAll('link[rel="icon"]').forEach((link) => {
+    link.href = BRAND.favicon + '?v=2';
+    link.type = 'image/png';
+  });
+  document.querySelectorAll('link[rel="apple-touch-icon"]').forEach((link) => {
+    link.href = BRAND.favicon + '?v=2';
   });
 
   const preloaderMark = document.querySelector('.preloader-monogram');
@@ -37,19 +41,9 @@ function applyBrandAssets() {
     lockup.innerHTML = `<img class="brand-wordmark" src="${BRAND.wordmark}" alt="Darla Quinn" />`;
   }
 
-  const heroSignature = document.querySelector('.hero-signature');
-  if (heroSignature) {
-    const sig = document.createElement('img');
-    sig.className = 'hero-signature hero-signature-asset';
-    sig.src = BRAND.signature;
-    sig.alt = '';
-    sig.setAttribute('aria-hidden', 'true');
-    heroSignature.replaceWith(sig);
-  }
-
   const closing = document.querySelector('.closing-brand');
   if (closing) {
-    closing.innerHTML = `<img class="closing-monogram" src="${BRAND.monogram}" alt="" aria-hidden="true" /><img class="closing-signature" src="${BRAND.signature}" alt="Darla Quinn" />`;
+    closing.innerHTML = `<img class="closing-monogram" src="${BRAND.monogram}" alt="" aria-hidden="true" /><span>DARLA QUINN</span>`;
   }
 
   const footerBrand = document.querySelector('.footer-brand');
@@ -104,17 +98,6 @@ brandStyles.textContent = `
   }
   @keyframes markBreath { 0%,100%{transform:scale(.96);opacity:.72} 50%{transform:scale(1);opacity:1} }
 
-  .hero-signature-asset {
-    width:clamp(210px, 25vw, 480px) !important;
-    height:auto !important;
-    right:4.5vw !important;
-    top:14vh !important;
-    transform:none !important;
-    color:unset !important;
-    filter:opacity(.38);
-    object-fit:contain;
-  }
-
   .closing-brand {
     display:flex;
     align-items:center;
@@ -127,10 +110,7 @@ brandStyles.textContent = `
     height:auto !important;
     border-radius:0 !important;
   }
-  .closing-brand .closing-signature {
-    width:clamp(170px,18vw,300px) !important;
-    height:auto !important;
-  }
+  .closing-brand span { font-size:11px; letter-spacing:.28em; font-weight:600; }
 
   .footer-brand {
     display:flex;
@@ -161,9 +141,7 @@ brandStyles.textContent = `
   @media (max-width:900px){
     .brand-lockup { width:150px; }
     .preloader-monogram { width:58px !important; }
-    .hero-signature-asset { width:200px !important; top:13vh !important; right:20px !important; }
     .closing-brand .closing-monogram { width:44px !important; }
-    .closing-brand .closing-signature { width:155px !important; }
     .footer-brand .footer-wordmark { width:230px !important; }
   }
   @media (prefers-reduced-motion: reduce){ .preloader-monogram{animation:none} }
