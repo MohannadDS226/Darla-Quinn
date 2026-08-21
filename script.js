@@ -22,7 +22,7 @@ const BRAND = {
   monogram: 'https://res.cloudinary.com/vysyrabp/image/upload/v1787341587/darla-quinn/dq-monogram.png',
   wordmark: 'https://res.cloudinary.com/vysyrabp/image/upload/v1787341579/darla-quinn/header-logo.png',
   favicon: 'https://res.cloudinary.com/vysyrabp/image/upload/v1787341604/darla-quinn/favicon-64.png',
-  signature: 'assets/brand/signature.svg'
+  signature: 'assets/brand/DarlaQuinn_Signature_MutedGold_Transparent.png'
 };
 
 function applyBrandAssets() {
@@ -119,7 +119,6 @@ brandStyles.textContent = `
     image-rendering:auto;
     backface-visibility:hidden;
     will-change:clip-path,opacity;
-    filter:blur(.32px) !important;
   }
 
   .closing-brand {
@@ -165,7 +164,7 @@ brandStyles.textContent = `
   @media (max-width:900px){
     .brand-lockup { width:150px; }
     .preloader-monogram { width:58px !important; }
-    .hero-signature-asset { width:230px !important; top:13vh !important; right:18px !important; filter:blur(.24px) !important; }
+    .hero-signature-asset { width:230px !important; top:13vh !important; right:18px !important; }
     .closing-brand .closing-monogram { width:44px !important; }
     .footer-brand .footer-wordmark { width:230px !important; }
   }
