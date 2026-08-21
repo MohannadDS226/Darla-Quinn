@@ -38,3 +38,27 @@ heroComposition.textContent = `
   }
 `;
 document.head.appendChild(heroComposition);
+
+const preloader = document.getElementById('preloader');
+const minimumLoaderTime = 1550;
+const loaderStartedAt = performance.now();
+
+function revealSite() {
+  if (!preloader || preloader.dataset.done === 'true') return;
+  preloader.dataset.done = 'true';
+  const elapsed = performance.now() - loaderStartedAt;
+  const wait = Math.max(0, minimumLoaderTime - elapsed);
+
+  window.setTimeout(() => {
+    preloader.classList.add('is-leaving');
+    document.body.classList.remove('is-loading');
+    window.setTimeout(() => preloader.remove(), 700);
+  }, wait);
+}
+
+if (document.readyState === 'complete') {
+  revealSite();
+} else {
+  window.addEventListener('load', revealSite, { once: true });
+  window.setTimeout(revealSite, 3200);
+}
