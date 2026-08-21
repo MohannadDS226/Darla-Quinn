@@ -114,9 +114,12 @@ brandStyles.textContent = `
     height:auto !important;
     right:4.5vw !important;
     top:15vh !important;
-    transform:none !important;
+    transform:translateZ(0) !important;
     object-fit:contain;
-    filter:none !important;
+    image-rendering:auto;
+    backface-visibility:hidden;
+    will-change:clip-path,opacity;
+    filter:blur(.32px) !important;
   }
 
   .closing-brand {
@@ -162,7 +165,7 @@ brandStyles.textContent = `
   @media (max-width:900px){
     .brand-lockup { width:150px; }
     .preloader-monogram { width:58px !important; }
-    .hero-signature-asset { width:230px !important; top:13vh !important; right:18px !important; }
+    .hero-signature-asset { width:230px !important; top:13vh !important; right:18px !important; filter:blur(.24px) !important; }
     .closing-brand .closing-monogram { width:44px !important; }
     .footer-brand .footer-wordmark { width:230px !important; }
   }
