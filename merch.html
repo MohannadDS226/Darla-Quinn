@@ -15,58 +15,33 @@
 <body>
   <header class="merch-header">
     <a class="brand" href="index.html"><img src="https://res.cloudinary.com/vysyrabp/image/upload/v1787341579/darla-quinn/header-logo.png" alt="Darla Quinn" /></a>
-    <nav><a href="index.html">Home</a><a href="#collection">Collection</a><a href="#details">Details</a></nav>
+    <nav><a href="index.html">Home</a><a href="#collection">Collection</a><a href="#archive">Archive</a></nav>
   </header>
 
   <main>
     <section class="merch-hero">
       <div class="hero-copy">
-        <p class="kicker">Concept collection / 001</p>
+        <p class="kicker">Concept collection / 001 / 25 pieces</p>
         <h1>Wear the<br><em>in-between.</em></h1>
-        <p class="deck">A speculative merch universe built from Darla Quinn's wordmark, monogram, signature, and the quiet emotional language of the songs.</p>
+        <p class="deck">A full speculative merchandise world built from Darla Quinn's wordmark, monogram, signature, instruments, and the visual language around the music.</p>
       </div>
       <div class="hero-mark"><img src="assets/brand/DarlaQuinn_DQ_Monogram_Web.png" alt="" /></div>
-      <div class="hero-note">Scroll sideways through the collection ↓</div>
+      <div class="hero-note">Scroll down to scrub sideways →</div>
     </section>
 
-    <section class="stacked-zone" id="collection">
-      <div class="stacked-track">
-        <article class="merch-card theme-ink">
-          <div class="product-stage hoodie"><div class="hood"></div><div class="body"><img src="assets/brand/DarlaQuinn_Primary_Stacked_Web.png" alt="Darla Quinn stacked logo" /></div><div class="sleeve l"></div><div class="sleeve r"></div></div>
-          <div class="card-copy"><span>01 / Hoodie</span><h2>Midnight<br>Monogram</h2><p>Heavyweight black hoodie, restrained front monogram, oversized stacked wordmark across the back.</p><small>Concept only</small></div>
-        </article>
-
-        <article class="merch-card theme-ivory">
-          <div class="product-stage tee"><div class="tee-body"><img src="assets/brand/DarlaQuinn_Signature_MutedGold_Transparent.png" alt="Darla Quinn signature" /></div><div class="tee-sleeve l"></div><div class="tee-sleeve r"></div></div>
-          <div class="card-copy"><span>02 / T-shirt</span><h2>Signature<br>Ivory</h2><p>Soft ivory tee with the handwritten signature floating low across the chest in muted gold.</p><small>Concept only</small></div>
-        </article>
-
-        <article class="merch-card theme-wine">
-          <div class="product-stage hoodie wine"><div class="hood"></div><div class="body"><img src="assets/brand/DarlaQuinn_DQ_Monogram_Web.png" alt="DQ monogram" /></div><div class="sleeve l"></div><div class="sleeve r"></div></div>
-          <div class="card-copy"><span>03 / Hoodie</span><h2>Afterglow<br>Wine</h2><p>Deep wine fleece with the DQ monogram centered like a seal, finished with tiny gold lyric-detail typography.</p><small>Concept only</small></div>
-        </article>
-
-        <article class="merch-card theme-gold">
-          <div class="pick-cluster"><div class="pick p1"><img src="assets/brand/DarlaQuinn_DQ_Monogram_Web.png" alt="DQ monogram guitar pick" /></div><div class="pick p2"><img src="assets/brand/DarlaQuinn_Signature_MutedGold_Transparent.png" alt="Darla Quinn signature guitar pick" /></div><div class="pick p3"><span>DQ</span></div></div>
-          <div class="card-copy"><span>04 / Guitar picks</span><h2>Player's<br>Set</h2><p>Three collectible picks exploring the monogram, signature and minimal DQ mark as tiny keepsakes for players and fans.</p><small>Concept only</small></div>
-        </article>
-
-        <article class="merch-card theme-paper">
-          <div class="product-stage tee black"><div class="tee-body"><img src="assets/brand/DarlaQuinn_Primary_Stacked_Web.png" alt="Darla Quinn wordmark" /></div><div class="tee-sleeve l"></div><div class="tee-sleeve r"></div></div>
-          <div class="card-copy"><span>05 / T-shirt</span><h2>Tour Type<br>Black</h2><p>Black oversized tee, clean stacked identity on front, designed to later carry dates, venues or lyric fragments on the reverse.</p><small>Concept only</small></div>
-        </article>
-      </div>
+    <section class="stacked-zone" id="collection" aria-label="Merch collection">
+      <div class="stacked-track" id="merch-track"></div>
+      <div class="collection-counter"><span id="counter-current">01</span><span>/ 25</span></div>
+      <div class="collection-progress"><span id="collection-progress-fill"></span></div>
     </section>
 
-    <section class="merch-details" id="details">
-      <p class="kicker">Small objects, same world</p>
-      <h2>Not just clothes.</h2>
-      <div class="detail-grid">
-        <div><span>01</span><h3>Lyric cards</h3><p>Heavy uncoated stock, tiny type, one line per card.</p></div>
-        <div><span>02</span><h3>Tote bags</h3><p>Minimal monogram front, signature detail on the reverse.</p></div>
-        <div><span>03</span><h3>Caps</h3><p>Small embroidered DQ mark, tonal and understated.</p></div>
-        <div><span>04</span><h3>Pick tins</h3><p>Muted-gold metal tins holding branded player sets.</p></div>
+    <section class="archive" id="archive">
+      <div class="archive-heading">
+        <p class="kicker">The full drop</p>
+        <h2>Twenty-five pieces.<br><em>One world.</em></h2>
+        <p>Apparel, accessories, collectibles and studio objects, all treated as one visual identity rather than separate merch products.</p>
       </div>
+      <div class="archive-grid" id="archive-grid"></div>
     </section>
   </main>
 
