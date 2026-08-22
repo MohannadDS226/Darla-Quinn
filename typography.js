@@ -7,7 +7,6 @@
   function loadCss(href,key){if(document.querySelector(`link[data-${key}]`))return;const l=document.createElement('link');l.rel='stylesheet';l.href=href;l.dataset[key]='1';document.head.appendChild(l)}
   function loadScript(src,key){if(document.querySelector(`script[data-${key}]`))return;const s=document.createElement('script');s.src=src;s.defer=true;s.dataset[key]='1';document.head.appendChild(s)}
 
-  // Reveal-ready dependency audit: Live styles belong only to the main site; Letters must never leak into Merch.
   if(isMain)loadCss('live.css','dqLive');
   loadCss('polish.css','dqPolish');
 
@@ -19,6 +18,8 @@
     if(quoteMeta)quoteMeta.textContent='Independent artist · songwriter';
     const featuredNote=document.querySelector('.press-ledger .press-stat:nth-child(2) small');
     if(featuredNote)featuredNote.textContent="Listed first among the current releases on Darla Quinn's official site.";
+    const ig=document.querySelector('.instagram-profile-copy');
+    if(ig)ig.innerHTML='<strong>darla.quinn.2001</strong><span>Singer-songwriter</span><span>Storytelling through music</span><span>Official Instagram updates</span>';
     document.querySelectorAll('a[target="_blank"]').forEach(a=>a.setAttribute('rel','noopener noreferrer'));
   }
 
@@ -51,7 +52,7 @@
     if(isMain)injectLive();
     refresh();
     requestAnimationFrame(()=>document.querySelectorAll('.hero-copy .typo-reveal,.hero-copy .typo-block').forEach((el,i)=>setTimeout(()=>el.classList.add('typo-live'),120+i*90)));
-    const mo=new MutationObserver(muts=>{let needs=false;muts.forEach(m=>m.addedNodes.forEach(n=>{if(n.nodeType===1)needs=true}));if(needs){cleanPublicCopy();refresh()}});mo.observe(document.body,{childList:true,subtree:true});
+    const mo=new MutationObserver(muts=>{let needs=false;muts.forEach(m=>m.addedNodes.forEach(n=>{if(n.nodeType===1)needs=true}));if(needs)refresh()});mo.observe(document.body,{childList:true,subtree:true});
   };
   if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',start);else start();
 
