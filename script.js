@@ -359,3 +359,97 @@ const loaderStartedAt=performance.now();
 function startHeroTypography(){ document.body.classList.add('type-ready'); document.querySelectorAll('.hero .type-clip').forEach((el,i)=>window.setTimeout(()=>el.classList.add('type-in'),120+i*135)); }
 function revealSite(){ if(!preloader||preloader.dataset.done==='true')return; preloader.dataset.done='true'; const elapsed=performance.now()-loaderStartedAt; const wait=Math.max(0,minimumLoaderTime-elapsed); window.setTimeout(()=>{ preloader.classList.add('is-leaving'); document.body.classList.remove('is-loading'); window.setTimeout(startHeroTypography,180); window.setTimeout(()=>preloader.remove(),700); },wait); }
 if(!preloader){startHeroTypography();} else if(document.readyState==='complete'){revealSite();} else {window.addEventListener('load',revealSite,{once:true});window.setTimeout(revealSite,3200);}
+
+// Cinematic listening experience: Spotify stays the real playback source; the site owns the visual world.
+(function buildSongExperience(){
+  const featured = document.querySelector('.featured');
+  if (!featured || document.querySelector('.song-experience')) return;
+
+  const section = document.createElement('section');
+  section.className = 'song-experience';
+  section.setAttribute('aria-labelledby','song-experience-title');
+  section.innerHTML = `
+    <div class="song-experience-bg" aria-hidden="true"></div>
+    <div class="song-experience-inner">
+      <div class="song-experience-intro">
+        <p class="section-kicker">The listening room / 01</p>
+        <h2 id="song-experience-title">Inside the song.</h2>
+        <p>One release, one room, no distractions. Start with the words, stay for the feeling.</p>
+      </div>
+      <div class="song-experience-grid">
+        <div class="song-art-wrap">
+          <div class="song-art-frame"><img src="https://static.wixstatic.com/media/e1328f_91e2859a01d5470eb3ee7e9a2453bb87~mv2.png/v1/fill/w_1200,h_1200,al_c,q_94,enc_auto/Darla.png" alt="The Version of Me You Knew artwork" /></div>
+          <div class="song-wave" aria-hidden="true">${Array.from({length:42},(_,i)=>`<span style="--i:${i}"></span>`).join('')}</div>
+          <div class="song-art-caption"><span>01</span><span>The Version of Me You Knew</span><span>2026</span></div>
+        </div>
+        <div class="song-player-panel">
+          <p class="song-now">Now playing through Spotify</p>
+          <h3>The Version of Me You Knew</h3>
+          <p class="song-quote">“Maybe I don't miss you.<br>Maybe I miss the version of me you knew.”</p>
+          <div class="song-meta-line"><span>Single</span><span>2026</span><span>Darla Quinn</span></div>
+          <div class="song-player-slot"></div>
+          <div class="song-chapters" aria-label="Selected songs">
+            <a href="https://open.spotify.com/artist/5qFlrFooOTan8kPcKyqt5p" target="_blank" rel="noreferrer"><span>01</span><strong>The Version of Me You Knew</strong><em>Listen ↗</em></a>
+            <a href="https://open.spotify.com/artist/5qFlrFooOTan8kPcKyqt5p" target="_blank" rel="noreferrer"><span>02</span><strong>The Promise</strong><em>Listen ↗</em></a>
+            <a href="https://open.spotify.com/artist/5qFlrFooOTan8kPcKyqt5p" target="_blank" rel="noreferrer"><span>03</span><strong>Half-Light</strong><em>Listen ↗</em></a>
+            <a href="https://open.spotify.com/artist/5qFlrFooOTan8kPcKyqt5p" target="_blank" rel="noreferrer"><span>04</span><strong>Breathe In</strong><em>Listen ↗</em></a>
+            <a href="https://open.spotify.com/artist/5qFlrFooOTan8kPcKyqt5p" target="_blank" rel="noreferrer"><span>05</span><strong>You Always Know (What I Need)</strong><em>Listen ↗</em></a>
+          </div>
+        </div>
+      </div>
+    </div>`;
+
+  featured.insertAdjacentElement('afterend', section);
+
+  const playerSlot = section.querySelector('.song-player-slot');
+  const spotifyShell = featured.querySelector('.spotify-shell');
+  const spotifyLink = featured.querySelector('.spotify-link');
+  if (spotifyShell) playerSlot.appendChild(spotifyShell);
+  if (spotifyLink) playerSlot.appendChild(spotifyLink);
+
+  const style = document.createElement('style');
+  style.textContent = `
+    .song-experience{position:relative;overflow:hidden;background:#171512;color:#f8f4ec;min-height:100vh;padding:9vw 7vw 10vw;isolation:isolate}
+    .song-experience-bg{position:absolute;inset:-12%;z-index:-2;background-image:linear-gradient(90deg,rgba(23,21,18,.98) 8%,rgba(23,21,18,.77) 54%,rgba(23,21,18,.92)),url("https://static.wixstatic.com/media/e1328f_91e2859a01d5470eb3ee7e9a2453bb87~mv2.png/v1/fill/w_1800,h_1800,al_c,q_82,enc_auto/Darla.png");background-size:cover;background-position:center;filter:blur(26px) saturate(.72);transform:scale(1.08)}
+    .song-experience::after{content:"";position:absolute;inset:0;z-index:-1;background:radial-gradient(circle at 28% 47%,rgba(201,174,134,.15),transparent 28%),linear-gradient(180deg,rgba(255,255,255,.025),transparent 30%);pointer-events:none}
+    .song-experience-inner{max-width:1600px;margin:0 auto}
+    .song-experience-intro{display:grid;grid-template-columns:.62fr 1.38fr;gap:7vw;align-items:end;margin-bottom:7vw;opacity:0;transform:translateY(26px);transition:opacity .9s ease,transform 1s cubic-bezier(.22,1,.36,1)}
+    .song-experience-intro h2{font-family:"Playfair Display",serif;font-weight:500;font-size:clamp(64px,8.5vw,150px);line-height:.88;letter-spacing:-.045em;margin:0}
+    .song-experience-intro>p:last-child{max-width:480px;margin:0 0 8px;color:rgba(248,244,236,.64);line-height:1.7;font-size:15px}
+    .song-experience-grid{display:grid;grid-template-columns:minmax(0,.92fr) minmax(0,1.08fr);gap:7vw;align-items:center}
+    .song-art-wrap,.song-player-panel{opacity:0;transform:translateY(30px);transition:opacity 1s ease,transform 1.1s cubic-bezier(.22,1,.36,1)}
+    .song-art-wrap{transition-delay:.08s}.song-player-panel{transition-delay:.2s}
+    .song-experience.experience-in .song-experience-intro,.song-experience.experience-in .song-art-wrap,.song-experience.experience-in .song-player-panel{opacity:1;transform:none}
+    .song-art-frame{position:relative;aspect-ratio:1/1;overflow:hidden;box-shadow:0 45px 100px rgba(0,0,0,.42);border:1px solid rgba(248,244,236,.14)}
+    .song-art-frame::after{content:"";position:absolute;inset:0;box-shadow:inset 0 0 0 1px rgba(255,255,255,.035);pointer-events:none}
+    .song-art-frame img{width:100%;height:100%;object-fit:cover;filter:saturate(.84) contrast(1.04)}
+    .song-art-caption{display:grid;grid-template-columns:45px 1fr auto;gap:18px;padding:17px 2px 0;color:rgba(248,244,236,.54);font-size:10px;text-transform:uppercase;letter-spacing:.13em}
+    .song-wave{height:76px;display:flex;align-items:center;gap:4px;padding:18px 0 2px;overflow:hidden}
+    .song-wave span{display:block;width:3px;height:calc(10px + (var(--i) % 9) * 4px);border-radius:99px;background:linear-gradient(180deg,#c9ae86,rgba(201,174,134,.22));transform-origin:center;animation:songPulse calc(1.5s + (var(--i) % 5)*.16s) ease-in-out infinite alternate;animation-delay:calc(var(--i)*-47ms)}
+    @keyframes songPulse{0%{transform:scaleY(.38);opacity:.32}100%{transform:scaleY(1.12);opacity:.9}}
+    .song-now{margin:0 0 18px;color:#c9ae86;font-size:10px;text-transform:uppercase;letter-spacing:.22em}
+    .song-player-panel h3{font-family:"Playfair Display",serif;font-size:clamp(48px,5.5vw,92px);line-height:.94;letter-spacing:-.038em;font-weight:500;margin:0;max-width:760px}
+    .song-quote{font-family:"Playfair Display",serif;font-style:italic;font-size:clamp(24px,2.5vw,42px);line-height:1.16;color:rgba(248,244,236,.72);margin:32px 0 30px;max-width:720px}
+    .song-meta-line{display:flex;gap:24px;padding:17px 0 22px;border-top:1px solid rgba(248,244,236,.17);color:rgba(248,244,236,.48);font-size:10px;text-transform:uppercase;letter-spacing:.13em}
+    .song-player-slot .spotify-shell{margin:0 0 15px;background:rgba(248,244,236,.035);border-color:rgba(248,244,236,.12);box-shadow:0 26px 80px rgba(0,0,0,.28)}
+    .song-player-slot .spotify-link{display:inline-block;color:rgba(248,244,236,.8);margin-bottom:32px}
+    .song-chapters{border-top:1px solid rgba(248,244,236,.16)}
+    .song-chapters a{display:grid;grid-template-columns:42px 1fr auto;gap:18px;align-items:center;padding:17px 0;border-bottom:1px solid rgba(248,244,236,.12);transition:padding-left .42s cubic-bezier(.22,1,.36,1),background .3s ease}
+    .song-chapters a:hover{padding-left:10px;background:linear-gradient(90deg,rgba(201,174,134,.08),transparent)}
+    .song-chapters span,.song-chapters em{font-size:10px;color:rgba(248,244,236,.42);text-transform:uppercase;letter-spacing:.12em;font-style:normal}
+    .song-chapters strong{font-family:"Playfair Display",serif;font-size:clamp(19px,1.7vw,27px);font-weight:500}
+    @media(max-width:900px){.song-experience{padding:100px 24px}.song-experience-intro,.song-experience-grid{grid-template-columns:1fr;gap:38px}.song-experience-intro{margin-bottom:54px}.song-experience-intro>p:last-child{max-width:620px}.song-wave{height:58px;gap:3px}.song-player-panel h3{font-size:clamp(46px,12vw,76px)}.song-quote{font-size:clamp(24px,7vw,36px)}.song-chapters a{grid-template-columns:34px 1fr}.song-chapters em{grid-column:2}.song-art-caption{grid-template-columns:32px 1fr auto}}
+    @media(max-width:560px){.song-experience-intro h2{font-size:clamp(58px,18vw,92px)}.song-experience{padding-left:20px;padding-right:20px}.song-art-caption{font-size:9px;gap:10px}.song-meta-line{gap:14px;flex-wrap:wrap}.song-wave span{width:2px}}
+    @media(prefers-reduced-motion:reduce){.song-wave span{animation:none}.song-experience-intro,.song-art-wrap,.song-player-panel{opacity:1!important;transform:none!important;transition:none!important}}
+  `;
+  document.head.appendChild(style);
+
+  const observer = new IntersectionObserver((entries)=>{
+    entries.forEach(entry=>{
+      if(!entry.isIntersecting) return;
+      section.classList.add('experience-in');
+      observer.disconnect();
+    });
+  },{threshold:.14,rootMargin:'0px 0px -8% 0px'});
+  observer.observe(section);
+})();
