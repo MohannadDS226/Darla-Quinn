@@ -1,0 +1,104 @@
+(()=>{
+  if(document.getElementById('letters')) return;
+
+  const style=document.createElement('style');
+  style.textContent=`
+    .letters-section{position:relative;overflow:hidden;background:#4d2729;color:#f8f4ec;padding:150px 7vw 160px;isolation:isolate}
+    .letters-section:before{content:"LETTERS";position:absolute;right:-3vw;top:1vw;font-family:"Playfair Display",serif;font-size:clamp(120px,22vw,350px);line-height:.72;letter-spacing:-.065em;color:rgba(248,244,236,.025);pointer-events:none;z-index:-1}
+    .letters-shell{max-width:1600px;margin:0 auto;display:grid;grid-template-columns:1.12fr .88fr;gap:9vw;align-items:end}
+    .letters-copy .section-kicker{color:#c9ae86}
+    .letters-copy h2{font-family:"Playfair Display",serif;font-size:clamp(72px,8.2vw,142px);font-weight:500;line-height:.86;letter-spacing:-.052em;margin:0;max-width:980px}
+    .letters-copy h2 em{font-weight:500}
+    .letters-copy>p:last-child{max-width:620px;margin:36px 0 0;color:rgba(248,244,236,.66);font-size:16px;line-height:1.8}
+    .letters-card{position:relative;padding:46px 0 0;border-top:1px solid rgba(248,244,236,.2)}
+    .letters-card:before{content:"DQ";position:absolute;right:0;top:34px;font-family:"Playfair Display",serif;font-size:84px;line-height:.7;color:rgba(248,244,236,.045)}
+    .letters-card h3{font-family:"Playfair Display",serif;font-size:clamp(34px,3.5vw,58px);font-weight:500;line-height:1.03;letter-spacing:-.035em;margin:0 0 24px;max-width:560px}
+    .letters-card>p{margin:0 0 34px;color:rgba(248,244,236,.58);font-size:13px;line-height:1.7;max-width:520px}
+    .letters-form{display:grid;grid-template-columns:1fr auto;gap:0;border-bottom:1px solid rgba(248,244,236,.5);align-items:end}
+    .letters-form input{width:100%;border:0;background:transparent;color:#f8f4ec;padding:18px 0;font:inherit;font-size:16px;outline:none}
+    .letters-form input::placeholder{color:rgba(248,244,236,.38)}
+    .letters-form button{border:0;background:transparent;color:#f8f4ec;padding:18px 0 18px 24px;font:inherit;font-size:10px;text-transform:uppercase;letter-spacing:.15em;cursor:pointer;transition:transform .35s cubic-bezier(.22,1,.36,1),opacity .25s ease}
+    .letters-form button:hover{transform:translateX(4px)}
+    .letters-form button:disabled{opacity:.45;cursor:default;transform:none}
+    .letters-meta{display:flex;justify-content:space-between;gap:24px;margin-top:17px;color:rgba(248,244,236,.38);font-size:10px;line-height:1.5;letter-spacing:.04em}
+    .letters-message{min-height:22px;margin-top:18px;font-family:"Playfair Display",serif;font-style:italic;font-size:21px;color:#ead6b8;opacity:0;transform:translateY(8px);transition:.45s cubic-bezier(.22,1,.36,1)}
+    .letters-message.show{opacity:1;transform:none}
+    .letters-rule{max-width:1600px;margin:90px auto 0;padding-top:28px;border-top:1px solid rgba(248,244,236,.12);display:grid;grid-template-columns:repeat(3,1fr);gap:5vw}
+    .letters-rule div{display:grid;grid-template-columns:auto 1fr;gap:16px;align-items:start}
+    .letters-rule span{font-family:"Playfair Display",serif;color:#c9ae86;font-size:24px}
+    .letters-rule p{margin:2px 0 0;color:rgba(248,244,236,.48);font-size:12px;line-height:1.7}
+    .letters-reveal{opacity:0;transform:translateY(28px);transition:opacity .95s ease,transform 1.05s cubic-bezier(.22,1,.36,1)}
+    .letters-reveal.in{opacity:1;transform:none}
+    @media(max-width:900px){.letters-section{padding:105px 24px 115px}.letters-shell{grid-template-columns:1fr;gap:64px}.letters-card{padding-top:36px}.letters-rule{margin-top:64px;grid-template-columns:1fr;gap:24px}.letters-copy h2{font-size:clamp(64px,18vw,100px)}}
+    @media(max-width:560px){.letters-form{grid-template-columns:1fr}.letters-form button{padding:10px 0 16px;text-align:left}.letters-meta{display:block}.letters-meta span{display:block;margin-top:7px}}
+    @media(prefers-reduced-motion:reduce){.letters-reveal{opacity:1!important;transform:none!important;transition:none!important}}
+  `;
+  document.head.appendChild(style);
+
+  const section=document.createElement('section');
+  section.className='letters-section';
+  section.id='letters';
+  section.setAttribute('aria-labelledby','letters-title');
+  section.innerHTML=`
+    <div class="letters-shell">
+      <div class="letters-copy letters-reveal">
+        <p class="section-kicker">Letters from Darla</p>
+        <h2 id="letters-title">A little closer.<br><em>Not louder.</em></h2>
+        <p>New songs, first listens, live dates and the occasional note from between the releases. No noise. Just the things worth sending.</p>
+      </div>
+      <div class="letters-card letters-reveal">
+        <h3>Stay for the next chapter.</h3>
+        <p>Join the mailing list for release notes, listening-room updates and future live announcements.</p>
+        <form class="letters-form" id="letters-form" novalidate>
+          <input id="letters-email" name="email" type="email" inputmode="email" autocomplete="email" placeholder="Your email address" aria-label="Email address" required />
+          <button type="submit">Join the list ↗</button>
+        </form>
+        <div class="letters-meta"><span>No spam. No weekly obligation.</span><span>Only when there is something worth saying.</span></div>
+        <div class="letters-message" id="letters-message" aria-live="polite"></div>
+      </div>
+    </div>
+    <div class="letters-rule letters-reveal">
+      <div><span>01</span><p>Hear about new releases and first-listen moments.</p></div>
+      <div><span>02</span><p>Get future live dates when they are officially announced.</p></div>
+      <div><span>03</span><p>Receive occasional notes from the world around the songs.</p></div>
+    </div>`;
+
+  const closing=document.querySelector('.closing-cta');
+  if(closing) closing.insertAdjacentElement('beforebegin',section);
+  else document.querySelector('main')?.appendChild(section);
+
+  const nav=document.querySelector('.site-header nav');
+  if(nav && !nav.querySelector('a[href="#letters"]')){
+    const link=document.createElement('a');
+    link.href='#letters';
+    link.textContent='Letters';
+    const contact=nav.querySelector('a[href="#contact"]');
+    nav.insertBefore(link,contact||null);
+  }
+
+  if(window.DQTypography?.refresh) window.DQTypography.refresh(section);
+
+  const observer=new IntersectionObserver(entries=>entries.forEach(entry=>{
+    if(!entry.isIntersecting)return;
+    entry.target.classList.add('in');
+    observer.unobserve(entry.target);
+  }),{threshold:.14,rootMargin:'0px 0px -8% 0px'});
+  section.querySelectorAll('.letters-reveal').forEach(el=>observer.observe(el));
+
+  const form=section.querySelector('#letters-form');
+  const input=section.querySelector('#letters-email');
+  const message=section.querySelector('#letters-message');
+  form?.addEventListener('submit',e=>{
+    e.preventDefault();
+    const email=input.value.trim();
+    if(!/^\S+@\S+\.\S+$/.test(email)){
+      message.textContent='That email looks unfinished.';
+      message.classList.add('show');
+      input.focus();
+      return;
+    }
+    message.textContent='You are on the list — almost. Sign-up delivery is not connected on this unofficial study yet.';
+    message.classList.add('show');
+    form.querySelector('button').disabled=true;
+  });
+})();
