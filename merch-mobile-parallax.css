@@ -2,8 +2,8 @@
 @media (max-width:900px){
   .stacked-zone.dq-mobile-parallax{
     position:relative!important;
-    height:calc(var(--dq-mobile-card-count,10) * 112svh)!important;
-    min-height:900svh;
+    height:calc(var(--dq-mobile-card-count,10) * 108svh)!important;
+    min-height:860svh;
     background:linear-gradient(180deg,#171512 0%,#1d1916 45%,#171512 100%)!important;
     perspective:1100px;
     perspective-origin:50% 46%;
@@ -23,6 +23,8 @@
     transform:none!important;
     perspective:1100px;
     perspective-origin:50% 46%;
+    touch-action:pan-y;
+    overscroll-behavior-x:contain;
   }
   .stacked-zone.dq-mobile-parallax .merch-card{
     position:absolute!important;
@@ -40,9 +42,10 @@
     transform-origin:50% 50%!important;
     transform-style:preserve-3d!important;
     backface-visibility:hidden;
-    will-change:transform,filter,opacity;
-    box-shadow:0 30px 80px rgba(0,0,0,.34)!important;
-    border:1px solid rgba(255,255,255,.09)!important;
+    will-change:transform,opacity;
+    contain:layout paint style;
+    box-shadow:0 26px 62px rgba(0,0,0,.30)!important;
+    border:1px solid rgba(255,255,255,.08)!important;
     pointer-events:none;
     transition:none!important;
   }
@@ -54,10 +57,11 @@
     overflow:visible!important;
   }
   .stacked-zone.dq-mobile-parallax .product-stage:after{
-    left:15%!important;
-    right:15%!important;
-    bottom:2%!important;
-    filter:blur(10px)!important;
+    left:16%!important;
+    right:16%!important;
+    bottom:3%!important;
+    filter:none!important;
+    opacity:.42;
   }
   .stacked-zone.dq-mobile-parallax .product-stage img{
     width:100%!important;
@@ -65,7 +69,8 @@
     max-height:43svh!important;
     object-fit:contain!important;
     transform:none!important;
-    filter:drop-shadow(0 20px 28px rgba(0,0,0,.24));
+    filter:none!important;
+    will-change:auto!important;
   }
   .stacked-zone.dq-mobile-parallax .card-copy{align-self:end!important}
   .stacked-zone.dq-mobile-parallax .card-copy>span{font-size:9px!important;letter-spacing:.16em!important}
@@ -100,5 +105,5 @@
 @media (prefers-reduced-motion:reduce) and (max-width:900px){
   .stacked-zone.dq-mobile-parallax{height:auto!important;min-height:0!important;padding:40px 0!important}
   .stacked-zone.dq-mobile-parallax .stacked-track{position:relative!important;height:auto!important;min-height:0!important;display:grid!important;gap:18px!important;padding:0 20px!important}
-  .stacked-zone.dq-mobile-parallax .merch-card{position:relative!important;left:auto!important;top:auto!important;width:100%!important;height:auto!important;min-height:620px!important;transform:none!important;filter:none!important;opacity:1!important}
+  .stacked-zone.dq-mobile-parallax .merch-card{position:relative!important;left:auto!important;top:auto!important;width:100%!important;height:auto!important;min-height:620px!important;transform:none!important;filter:none!important;opacity:1!important;visibility:visible!important}
 }
