@@ -1,29 +1,29 @@
 const products=[
-{id:1,name:'Midnight Signature Hoodie',category:'apparel',price:68,badge:'Featured',desc:'Heavyweight black hoodie with signature branding and a polished artist-store finish.'},
-{id:2,name:'Ivory Signature Tee',category:'apparel',price:36,badge:'Essential',desc:'Soft ivory tee with restrained signature artwork and a clean everyday silhouette.'},
-{id:3,name:'Afterglow Wine Hoodie',category:'apparel',price:72,badge:'New',desc:'Deep wine fleece with monogram details, warm metallic accents and a relaxed oversized fit.'},
-{id:4,name:'DQ Monogram Cap',category:'accessories',price:32,badge:'Best seller',desc:'Classic black cap embroidered with the DQ monogram for an understated daily piece.'},
-{id:5,name:'Ivory Lounge Pants',category:'apparel',price:54,badge:'New',desc:'Soft ivory sweatpants with discreet DQ detailing and a relaxed off-duty shape.'},
-{id:6,name:"Player's Pick Set",category:'studio',price:18,badge:'Player essential',desc:'A collectible set of branded guitar picks designed for both play and display.'},
-{id:7,name:'Ivory Monogram Sweatshirt',category:'apparel',price:62,badge:'Essential',desc:'Clean crewneck sweatshirt with subtle front monogram and signature back artwork.'},
-{id:8,name:'DQ Varsity Jacket',category:'apparel',price:95,badge:'Statement piece',desc:'Premium varsity-inspired jacket with bold identity work and a collectible finish.'},
-{id:9,name:'Signature Canvas Tote',category:'accessories',price:34,badge:'Everyday',desc:'Structured canvas tote with signature artwork and enough room for the everyday essentials.'},
-{id:10,name:'DQ Knit Beanie',category:'accessories',price:26,badge:'Essential',desc:'Ribbed black beanie finished with a small embroidered DQ monogram.'},
-{id:11,name:'In-Between Long Sleeve',category:'apparel',price:46,badge:'New',desc:'Washed charcoal long sleeve with quiet signature placement and sleeve typography.'},
-{id:12,name:'Studio Mug & Pick Keychain',category:'studio',price:22,badge:'Gift set',desc:'A matte black mug paired with a guitar-pick keychain for desk, studio or rehearsal days.'},
-{id:13,name:'After Hours Joggers',category:'apparel',price:58,badge:'Limited',desc:'Washed black wide-leg joggers with lyric details, celestial marks and distressed artwork.'},
-{id:14,name:'In-Between Joggers',category:'apparel',price:58,badge:'Limited',desc:'Relaxed black joggers with handwritten lines, monogram art and softly weathered graphics.'},
-{id:15,name:'Version Joggers',category:'apparel',price:58,badge:'Limited',desc:'Graphic fleece joggers carrying fragments of the emotional world around the songs.'},
-{id:16,name:'Writing Room Joggers',category:'apparel',price:58,badge:'Limited',desc:'Black joggers with sketchbook-style flourishes, small stars and lyric-led artwork.'},
-{id:17,name:'Midnight Wide-Leg Pants',category:'apparel',price:58,badge:'New',desc:'Wide-leg black lounge pants with elegant cream artwork and a softer, fashion-led finish.'},
-{id:18,name:'Ivory Crew Socks',category:'accessories',price:16,badge:'Everyday',desc:'Soft ribbed crew socks with black and muted-gold DQ identity details.'},
-{id:19,name:'Gold Monogram Phone Case',category:'accessories',price:28,badge:'New',desc:'Black and ivory phone case finished with gold linework and the DQ monogram.'},
-{id:20,name:"Songwriter's Notebook",category:'studio',price:24,badge:'Studio essential',desc:'A premium notebook for lyrics, melodies, fragments and the ideas that arrive between songs.'},
-{id:21,name:'Limited Edition Cassette Box',category:'collectors',price:48,badge:'Collector piece',desc:'A nostalgic cassette-style presentation set designed as a display-worthy keepsake.'},
-{id:22,name:'Signature Luxe Tote',category:'accessories',price:42,badge:'New',desc:'Elevated structured tote with black trim, signature artwork and polished gold hardware.'},
-{id:23,name:'DQ Silk Scarf',category:'accessories',price:42,badge:'Signature piece',desc:'Soft black and ivory scarf built from the monogram, signature and star motif system.'},
-{id:24,name:'Leather Guitar Strap',category:'studio',price:55,badge:'Player essential',desc:'Premium black leather guitar strap with cream panels, gold hardware and DQ branding.'},
-{id:25,name:'The In-Between Collector Piece',category:'collectors',price:40,badge:'Limited',desc:'A final collectible from the first merch drop, designed to sit naturally inside the wider visual world.'}
+{id:1,name:'Midnight Signature Hoodie',category:'apparel',price:68,badge:'Featured',desc:'Heavyweight black hoodie with signature branding and a polished artist-store finish.',material:'Heavyweight brushed cotton',fit:'Relaxed oversized',detail:'Signature front / statement back'},
+{id:2,name:'Ivory Signature Tee',category:'apparel',price:36,badge:'Essential',desc:'Soft ivory tee with restrained signature artwork and a clean everyday silhouette.',material:'Premium combed cotton',fit:'Relaxed unisex',detail:'Muted-gold signature print'},
+{id:3,name:'Afterglow Wine Hoodie',category:'apparel',price:72,badge:'New',desc:'Deep wine fleece with monogram details, warm metallic accents and a relaxed oversized fit.',material:'Heavy brushed fleece',fit:'Relaxed oversized',detail:'DQ monogram / gold accents'},
+{id:4,name:'DQ Monogram Cap',category:'accessories',price:32,badge:'Best seller',desc:'Classic black cap embroidered with the DQ monogram for an understated daily piece.',material:'Structured cotton twill',fit:'Adjustable',detail:'Tonal DQ embroidery'},
+{id:5,name:'Ivory Lounge Pants',category:'apparel',price:54,badge:'New',desc:'Soft ivory sweatpants with discreet DQ detailing and a relaxed off-duty shape.',material:'Soft brushed fleece',fit:'Relaxed straight leg',detail:'Minimal DQ placement'},
+{id:6,name:"Player's Pick Set",category:'studio',price:18,badge:'Player essential',desc:'A collectible set of branded guitar picks designed for both play and display.',material:'Mixed-gauge player set',fit:'One size',detail:'Three signature designs'},
+{id:7,name:'Ivory Monogram Sweatshirt',category:'apparel',price:62,badge:'Essential',desc:'Clean crewneck sweatshirt with subtle front monogram and signature back artwork.',material:'Premium loopback cotton',fit:'Relaxed',detail:'Monogram front / signature back'},
+{id:8,name:'DQ Varsity Jacket',category:'apparel',price:95,badge:'Statement piece',desc:'Premium varsity-inspired jacket with bold identity work and a collectible finish.',material:'Wool-touch body / contrast sleeves',fit:'Classic varsity',detail:'Embroidered identity details'},
+{id:9,name:'Signature Canvas Tote',category:'accessories',price:34,badge:'Everyday',desc:'Structured canvas tote with signature artwork and enough room for the everyday essentials.',material:'Heavy cotton canvas',fit:'One size',detail:'Signature front print'},
+{id:10,name:'DQ Knit Beanie',category:'accessories',price:26,badge:'Essential',desc:'Ribbed black beanie finished with a small embroidered DQ monogram.',material:'Soft rib knit',fit:'One size',detail:'Embroidered DQ monogram'},
+{id:11,name:'In-Between Long Sleeve',category:'apparel',price:46,badge:'New',desc:'Washed charcoal long sleeve with quiet signature placement and sleeve typography.',material:'Washed heavyweight jersey',fit:'Relaxed',detail:'Sleeve typography / signature mark'},
+{id:12,name:'Studio Mug & Pick Keychain',category:'studio',price:22,badge:'Gift set',desc:'A matte black mug paired with a guitar-pick keychain for desk, studio or rehearsal days.',material:'Ceramic / enamel-finish charm',fit:'One size',detail:'Two-piece studio set'},
+{id:13,name:'After Hours Joggers',category:'apparel',price:58,badge:'Limited',desc:'Washed black wide-leg joggers with lyric details, celestial marks and distressed artwork.',material:'Heavy washed fleece',fit:'Wide leg',detail:'Lyric / celestial graphic system'},
+{id:14,name:'In-Between Joggers',category:'apparel',price:58,badge:'Limited',desc:'Relaxed black joggers with handwritten lines, monogram art and softly weathered graphics.',material:'Soft heavyweight fleece',fit:'Relaxed',detail:'Handwritten lines / DQ monogram'},
+{id:15,name:'Version Joggers',category:'apparel',price:58,badge:'Limited',desc:'Graphic fleece joggers carrying fragments of the emotional world around the songs.',material:'Heavy brushed fleece',fit:'Relaxed',detail:'Song-fragment graphics'},
+{id:16,name:'Writing Room Joggers',category:'apparel',price:58,badge:'Limited',desc:'Black joggers with sketchbook-style flourishes, small stars and lyric-led artwork.',material:'Soft fleece',fit:'Relaxed',detail:'Sketchbook artwork / star details'},
+{id:17,name:'Midnight Wide-Leg Pants',category:'apparel',price:58,badge:'New',desc:'Wide-leg black lounge pants with elegant cream artwork and a softer, fashion-led finish.',material:'Heavy drape fleece',fit:'Wide leg',detail:'Cream signature graphics'},
+{id:18,name:'Ivory Crew Socks',category:'accessories',price:16,badge:'Everyday',desc:'Soft ribbed crew socks with black and muted-gold DQ identity details.',material:'Cotton-rich rib knit',fit:'One size',detail:'DQ knit detailing'},
+{id:19,name:'Gold Monogram Phone Case',category:'accessories',price:28,badge:'New',desc:'Black and ivory phone case finished with gold linework and the DQ monogram.',material:'Protective gloss shell',fit:'Selected phone sizes',detail:'Gold DQ monogram'},
+{id:20,name:"Songwriter's Notebook",category:'studio',price:24,badge:'Studio essential',desc:'A premium notebook for lyrics, melodies, fragments and the ideas that arrive between songs.',material:'Clothbound cover / uncoated pages',fit:'A5',detail:'Foil DQ identity'},
+{id:21,name:'Limited Edition Cassette Box',category:'collectors',price:48,badge:'Collector piece',desc:'A nostalgic cassette-style presentation set designed as a display-worthy keepsake.',material:'Rigid presentation box',fit:'Limited edition',detail:'Cassette-inspired collector packaging'},
+{id:22,name:'Signature Luxe Tote',category:'accessories',price:42,badge:'New',desc:'Elevated structured tote with black trim, signature artwork and polished gold hardware.',material:'Structured canvas / metal hardware',fit:'One size',detail:'Signature art / gold details'},
+{id:23,name:'DQ Silk Scarf',category:'accessories',price:42,badge:'Signature piece',desc:'Soft black and ivory scarf built from the monogram, signature and star motif system.',material:'Silk-touch twill',fit:'One size',detail:'All-over DQ motif'},
+{id:24,name:'Leather Guitar Strap',category:'studio',price:55,badge:'Player essential',desc:'Premium black leather guitar strap with cream panels, gold hardware and DQ branding.',material:'Leather-look padded strap',fit:'Adjustable',detail:'Cream panels / gold hardware'},
+{id:25,name:'The In-Between Collector Piece',category:'collectors',price:40,badge:'Limited',desc:'A final collectible from the first merch drop, designed to sit naturally inside the wider visual world.',material:'Mixed premium finish',fit:'Collector edition',detail:'First-drop identity treatment'}
 ];
 
 const featureIds=[1,3,6,8,20,21,23,24];
@@ -31,9 +31,9 @@ const track=document.getElementById('merch-track');
 const grid=document.getElementById('shop-grid');
 const zone=document.querySelector('.stacked-zone');
 const progressFill=document.getElementById('collection-progress-fill');
-
 const money=n=>`£${n}`;
 const imagePath=id=>`assets/Merch/${id}.png`;
+const categoryLabel=c=>({apparel:'Apparel',accessories:'Accessories',collectors:'Collector piece',studio:'Studio essential'}[c]||c);
 
 featureIds.forEach(id=>{
  const p=products.find(x=>x.id===id);
@@ -79,18 +79,68 @@ document.querySelectorAll('.filter').forEach(btn=>btn.addEventListener('click',(
 
 let bag=[];
 try{bag=JSON.parse(localStorage.getItem('dq-merch-bag')||'[]')}catch(e){bag=[]}
+bag=bag.map(item=>typeof item==='number'?{id:item,size:null}:item).filter(item=>item&&products.some(p=>p.id===item.id));
 const bagEl=document.getElementById('bag'),backdrop=document.getElementById('bag-backdrop'),bagItems=document.getElementById('bag-items'),bagCount=document.getElementById('bag-count'),bagTotal=document.getElementById('bag-total'),bagEmpty=document.getElementById('bag-empty');
 function saveBag(){localStorage.setItem('dq-merch-bag',JSON.stringify(bag));renderBag()}
 function renderBag(){
  bagItems.innerHTML='';
  let total=0;
- bag.forEach((id,index)=>{const p=products.find(x=>x.id===id);if(!p)return;total+=p.price;const item=document.createElement('div');item.className='bag-item';item.innerHTML=`<img src="${imagePath(p.id)}" alt="${p.name}" /><div><h4>${p.name}</h4><small>${money(p.price)}</small></div><button class="remove-item" type="button" data-index="${index}" aria-label="Remove ${p.name}">×</button>`;bagItems.appendChild(item)});
+ bag.forEach((entry,index)=>{const p=products.find(x=>x.id===entry.id);if(!p)return;total+=p.price;const item=document.createElement('div');item.className='bag-item';item.innerHTML=`<img src="${imagePath(p.id)}" alt="${p.name}" /><div><h4>${p.name}</h4><small>${money(p.price)}${entry.size?` · ${entry.size}`:''}</small></div><button class="remove-item" type="button" data-index="${index}" aria-label="Remove ${p.name}">×</button>`;bagItems.appendChild(item)});
  bagCount.textContent=bag.length;bagTotal.textContent=money(total);bagEmpty.style.display=bag.length?'none':'block';
  document.querySelectorAll('.remove-item').forEach(b=>b.onclick=()=>{bag.splice(Number(b.dataset.index),1);saveBag()});
 }
-function openBag(){bagEl.classList.add('open');bagEl.setAttribute('aria-hidden','false');backdrop.classList.add('show')}
-function closeBag(){bagEl.classList.remove('open');bagEl.setAttribute('aria-hidden','true');backdrop.classList.remove('show')}
+function openBag(){closeModal();bagEl.classList.add('open');bagEl.setAttribute('aria-hidden','false');backdrop.classList.add('show');document.body.classList.add('modal-lock')}
+function closeBag(){bagEl.classList.remove('open');bagEl.setAttribute('aria-hidden','true');backdrop.classList.remove('show');if(!modal.classList.contains('open'))document.body.classList.remove('modal-lock')}
 document.getElementById('bag-trigger').onclick=openBag;document.getElementById('bag-close').onclick=closeBag;backdrop.onclick=closeBag;
-document.addEventListener('click',e=>{const add=e.target.closest('.add-bag');if(add){bag.push(Number(add.dataset.id));saveBag();openBag()}const view=e.target.closest('.view-product');if(view){const p=products.find(x=>x.id===Number(view.dataset.id));if(p){document.querySelector('.shop-heading').scrollIntoView({behavior:'smooth'});setTimeout(()=>alert(`${p.name}\n${p.desc}\n${money(p.price)}`),350)}}});
+
+const modal=document.getElementById('product-modal');
+const modalBackdrop=document.getElementById('modal-backdrop');
+const modalClose=document.getElementById('modal-close');
+const modalImage=document.getElementById('modal-image');
+const modalBadge=document.getElementById('modal-badge');
+const modalCategory=document.getElementById('modal-category');
+const modalTitle=document.getElementById('modal-title');
+const modalPrice=document.getElementById('modal-price');
+const modalDescription=document.getElementById('modal-description');
+const modalSpecs=document.getElementById('modal-specs');
+const modalOptions=document.getElementById('modal-options');
+const relatedGrid=document.getElementById('related-grid');
+const qtyValue=document.getElementById('qty-value');
+const modalAdd=document.getElementById('modal-add');
+let activeProduct=null,activeSize=null,activeQty=1;
+
+function renderRelated(p){
+ relatedGrid.innerHTML='';
+ let related=products.filter(x=>x.id!==p.id&&x.category===p.category).slice(0,3);
+ if(related.length<3)related=[...related,...products.filter(x=>x.id!==p.id&&!related.some(r=>r.id===x.id)).slice(0,3-related.length)];
+ related.forEach(r=>{const el=document.createElement('button');el.type='button';el.className='related-card';el.dataset.id=r.id;el.innerHTML=`<img src="${imagePath(r.id)}" alt="${r.name}" loading="lazy"/><h4>${r.name}</h4><span>${money(r.price)}</span>`;relatedGrid.appendChild(el)});
+}
+function openModal(id){
+ const p=products.find(x=>x.id===id);if(!p)return;
+ closeBag();activeProduct=p;activeQty=1;activeSize=p.category==='apparel'?'M':null;qtyValue.textContent='1';
+ modalImage.src=imagePath(p.id);modalImage.alt=p.name;modalBadge.textContent=p.badge;modalCategory.textContent=categoryLabel(p.category);modalTitle.textContent=p.name;modalPrice.textContent=money(p.price);modalDescription.textContent=p.desc;
+ modalSpecs.innerHTML=`<div><span>Material</span><strong>${p.material}</strong></div><div><span>Fit / format</span><strong>${p.fit}</strong></div><div><span>Detail</span><strong>${p.detail}</strong></div>`;
+ if(p.category==='apparel'){
+  modalOptions.innerHTML=`<div class="option-label">Select size</div><div class="size-options">${['XS','S','M','L','XL'].map(s=>`<button class="size-btn${s==='M'?' active':''}" type="button" data-size="${s}">${s}</button>`).join('')}</div>`;
+ }else if(p.id===19){
+  activeSize='iPhone 15 Pro';modalOptions.innerHTML=`<div class="option-label">Select case</div><div class="size-options">${['iPhone 15 Pro','iPhone 15','iPhone 14 Pro'].map((s,i)=>`<button class="size-btn${i===0?' active':''}" type="button" data-size="${s}">${s.replace('iPhone ','')}</button>`).join('')}</div>`;
+ }else modalOptions.innerHTML='<div class="option-label">One size / collector format</div>';
+ renderRelated(p);
+ modal.classList.add('open');modal.setAttribute('aria-hidden','false');modalBackdrop.classList.add('show');document.body.classList.add('modal-lock');modal.scrollTop=0;
+}
+function closeModal(){if(!modal)return;modal.classList.remove('open');modal.setAttribute('aria-hidden','true');modalBackdrop.classList.remove('show');if(!bagEl.classList.contains('open'))document.body.classList.remove('modal-lock')}
+modalClose.onclick=closeModal;modalBackdrop.onclick=closeModal;
+document.getElementById('qty-minus').onclick=()=>{activeQty=Math.max(1,activeQty-1);qtyValue.textContent=activeQty};
+document.getElementById('qty-plus').onclick=()=>{activeQty=Math.min(9,activeQty+1);qtyValue.textContent=activeQty};
+modalOptions.addEventListener('click',e=>{const btn=e.target.closest('.size-btn');if(!btn)return;modalOptions.querySelectorAll('.size-btn').forEach(b=>b.classList.remove('active'));btn.classList.add('active');activeSize=btn.dataset.size});
+relatedGrid.addEventListener('click',e=>{const card=e.target.closest('.related-card');if(card)openModal(Number(card.dataset.id))});
+modalAdd.onclick=()=>{if(!activeProduct)return;for(let i=0;i<activeQty;i++)bag.push({id:activeProduct.id,size:activeSize});saveBag();closeModal();openBag()};
+
+document.addEventListener('click',e=>{
+ const add=e.target.closest('.add-bag');if(add){const p=products.find(x=>x.id===Number(add.dataset.id));bag.push({id:p.id,size:p.category==='apparel'?'M':null});saveBag();openBag()}
+ const view=e.target.closest('.view-product');if(view)openModal(Number(view.dataset.id));
+ const image=e.target.closest('.product-image');if(image){const card=image.closest('.product-card');const viewBtn=card&&card.querySelector('.view-product');if(viewBtn)openModal(Number(viewBtn.dataset.id))}
+});
+document.addEventListener('keydown',e=>{if(e.key==='Escape'){closeModal();closeBag()}});
 document.getElementById('checkout').onclick=()=>{const note=document.getElementById('checkout-note');note.textContent='This store UI is ready, but payment processing is intentionally not connected on the unofficial study.';note.style.color='#4d2729'};
 renderBag();
