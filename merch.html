@@ -3,9 +3,9 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <meta name="description" content="Darla Quinn — merch concept collection." />
+  <meta name="description" content="Shop the Darla Quinn collection — apparel, accessories and collector pieces inspired by the music." />
   <meta name="theme-color" content="#171512" />
-  <title>Darla Quinn — Merch Concepts</title>
+  <title>Darla Quinn — Shop</title>
   <link rel="icon" type="image/png" href="https://res.cloudinary.com/vysyrabp/image/upload/v1787341604/darla-quinn/favicon-64.png?v=2" />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -15,37 +15,58 @@
 <body>
   <header class="merch-header">
     <a class="brand" href="index.html"><img src="https://res.cloudinary.com/vysyrabp/image/upload/v1787341579/darla-quinn/header-logo.png" alt="Darla Quinn" /></a>
-    <nav><a href="index.html">Home</a><a href="#collection">Collection</a><a href="#archive">Archive</a></nav>
+    <nav><a href="index.html">Home</a><a href="#collection">Featured</a><a href="#shop">Shop</a><button class="bag-trigger" id="bag-trigger" type="button">Bag <span id="bag-count">0</span></button></nav>
   </header>
 
   <main>
     <section class="merch-hero">
       <div class="hero-copy">
-        <p class="kicker">Concept collection / 001 / 25 pieces</p>
+        <p class="kicker">The Darla Quinn shop</p>
         <h1>Wear the<br><em>in-between.</em></h1>
-        <p class="deck">A full speculative merchandise world built from Darla Quinn's wordmark, monogram, signature, instruments, and the visual language around the music.</p>
+        <p class="deck">A refined collection of apparel, accessories and collector pieces shaped around the visual and emotional world of the music.</p>
+        <a class="shop-cta" href="#shop">Shop the collection <span>↓</span></a>
       </div>
       <div class="hero-mark"><img src="assets/brand/DarlaQuinn_DQ_Monogram_Web.png" alt="" /></div>
-      <div class="hero-note">Scroll down to scrub sideways →</div>
+      <div class="hero-note">Scroll to discover →</div>
     </section>
 
-    <section class="stacked-zone" id="collection" aria-label="Merch collection">
+    <section class="stacked-zone" id="collection" aria-label="Featured merch collection">
       <div class="stacked-track" id="merch-track"></div>
-      <div class="collection-counter"><span id="counter-current">01</span><span>/ 25</span></div>
       <div class="collection-progress"><span id="collection-progress-fill"></span></div>
     </section>
 
-    <section class="archive" id="archive">
-      <div class="archive-heading">
-        <p class="kicker">The full drop</p>
-        <h2>Twenty-five pieces.<br><em>One world.</em></h2>
-        <p>Apparel, accessories, collectibles and studio objects, all treated as one visual identity rather than separate merch products.</p>
+    <section class="shop" id="shop">
+      <div class="shop-heading">
+        <div><p class="kicker">Shop the collection</p><h2>Made to<br><em>stay with you.</em></h2></div>
+        <p>Signature staples, player essentials and keepsakes for the quiet hours between songs.</p>
       </div>
-      <div class="archive-grid" id="archive-grid"></div>
+      <div class="shop-controls" role="tablist" aria-label="Filter products">
+        <button class="filter active" data-filter="all" type="button">All</button>
+        <button class="filter" data-filter="apparel" type="button">Apparel</button>
+        <button class="filter" data-filter="accessories" type="button">Accessories</button>
+        <button class="filter" data-filter="collectors" type="button">Collector pieces</button>
+        <button class="filter" data-filter="studio" type="button">Studio essentials</button>
+      </div>
+      <div class="shop-grid" id="shop-grid"></div>
+    </section>
+
+    <section class="store-note">
+      <p class="kicker">The details</p>
+      <h2>Designed like the songs.<br><em>Quietly personal.</em></h2>
+      <div class="store-note-grid"><p>Premium-feeling materials, understated marks and small details that reward a closer look.</p><p>Apparel includes size selection in the bag. Collector pieces and accessories are one-size unless noted.</p><p>Store interface is presented as part of this unofficial creative study; payment checkout is not connected.</p></div>
     </section>
   </main>
 
-  <footer><img src="https://res.cloudinary.com/vysyrabp/image/upload/v1787341579/darla-quinn/header-logo.png" alt="Darla Quinn" /><p>Concept merchandise — unofficial creative study.</p></footer>
+  <aside class="bag" id="bag" aria-hidden="true">
+    <button class="bag-close" id="bag-close" type="button" aria-label="Close bag">×</button>
+    <div class="bag-head"><p class="kicker">Your bag</p><h2>Selected pieces.</h2></div>
+    <div class="bag-items" id="bag-items"></div>
+    <div class="bag-empty" id="bag-empty">Your bag is waiting for something good.</div>
+    <div class="bag-foot"><div><span>Subtotal</span><strong id="bag-total">£0</strong></div><button class="checkout" id="checkout" type="button">Checkout</button><small id="checkout-note">Checkout is not connected on this unofficial study.</small></div>
+  </aside>
+  <div class="bag-backdrop" id="bag-backdrop"></div>
+
+  <footer><img src="https://res.cloudinary.com/vysyrabp/image/upload/v1787341579/darla-quinn/header-logo.png" alt="Darla Quinn" /><div><a href="index.html">Back to main site ↗</a><p>Unofficial creative study.</p></div></footer>
   <script src="merch.js"></script>
 </body>
 </html>
