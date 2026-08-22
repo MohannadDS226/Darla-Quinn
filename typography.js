@@ -1,6 +1,7 @@
 (()=>{
   const reduced=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   const isMain=!!document.querySelector('.site-header');
+  const isMerch=!!document.querySelector('.merch-header');
   const wordSelectors=['.hero-copy h1','.shop-heading h2','.store-note h2','.card-copy h2','.product-top h3','.bag-head h2','.modal-copy h2','.related-head h3','.press-intro h2','.press-stat h3','.press-quote p','.press-contact h3','.live-intro h2','.live-copy h3','.live-list-head h3','.live-empty h4','.letters-copy h2','.letters-card h3'];
   const blockSelectors=['.hero-copy .kicker','.hero-copy .deck','.shop-cta','.card-copy>span','.card-copy p','.card-copy strong','.shop-heading .kicker','.shop-heading>p','.product-info p','.store-note .kicker','.store-note-grid p','.modal-copy .kicker','.modal-price','.modal-description','.modal-note','.press-intro .section-kicker','.press-deck','.press-stat p','.press-stat small','.press-contact .section-kicker','.press-note','.live-intro .section-kicker','.live-deck','.live-copy .section-kicker','.live-copy>p:not(.section-kicker)','.live-status','.live-actions','.live-list-head p','.letters-copy .section-kicker','.letters-copy>p:last-child','.letters-card>p','.letters-meta','.letters-rule p'];
 
@@ -8,6 +9,7 @@
   function loadScript(src,key){if(document.querySelector(`script[data-${key}]`))return;const s=document.createElement('script');s.src=src;s.defer=true;s.dataset[key]='1';document.head.appendChild(s)}
 
   if(isMain)loadCss('live.css','dqLive');
+  if(isMerch)loadCss('merch-mobile-parallax.css','dqMerchMobileParallax');
   loadCss('polish.css','dqPolish');
 
   if(isMain){
@@ -67,5 +69,6 @@
   if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',start);else start();
 
   if(isMain)loadScript('mailing.js','dqMailing');
+  if(isMerch)loadScript('merch-mobile-parallax.js','dqMerchMobileParallax');
   loadScript('polish.js','dqPolish');
 })();
