@@ -203,6 +203,120 @@ typeStyles.textContent = `
 `;
 document.head.appendChild(typeStyles);
 
+const instagramStyles = document.createElement('style');
+instagramStyles.textContent = `
+  .instagram-news {
+    background:#eee4d8;
+    color:var(--ink);
+    padding:110px 1.8vw 120px;
+    overflow:hidden;
+  }
+  .instagram-news-heading { padding:0 0 58px; }
+  .instagram-news-heading .section-kicker { margin-left:.2vw; }
+  .instagram-news-heading h2 {
+    margin:0;
+    font-family:"Playfair Display",serif;
+    font-weight:500;
+    font-size:clamp(78px,10vw,170px);
+    line-height:.82;
+    letter-spacing:-.055em;
+  }
+  .instagram-news-frame {
+    border:1px solid rgba(23,21,18,.17);
+    padding:58px 4.2vw 0;
+    min-height:640px;
+  }
+  .instagram-profile {
+    width:min(560px,100%);
+    margin:0 auto 38px;
+    display:grid;
+    grid-template-columns:64px 1fr auto;
+    gap:18px;
+    align-items:start;
+  }
+  .instagram-profile > img {
+    width:64px !important;
+    height:64px !important;
+    border-radius:50%;
+    object-fit:cover;
+    object-position:center 18%;
+  }
+  .instagram-profile-copy { display:flex; flex-direction:column; gap:2px; font-size:13px; line-height:1.28; }
+  .instagram-profile-copy strong { font-family:"Playfair Display",serif; font-size:27px; font-weight:500; margin-bottom:7px; letter-spacing:-.03em; }
+  .instagram-profile-copy span { color:rgba(23,21,18,.72); }
+  .instagram-open { align-self:center; font-size:11px; letter-spacing:.12em; text-transform:uppercase; white-space:nowrap; border-bottom:1px solid rgba(23,21,18,.32); padding-bottom:4px; }
+  .instagram-carousel-wrap { position:relative; margin:0 -1px; }
+  .instagram-carousel {
+    display:grid;
+    grid-auto-flow:column;
+    grid-auto-columns:minmax(280px, 25%);
+    overflow-x:auto;
+    scroll-snap-type:x mandatory;
+    scroll-behavior:smooth;
+    scrollbar-width:none;
+  }
+  .instagram-carousel::-webkit-scrollbar { display:none; }
+  .instagram-card {
+    position:relative;
+    aspect-ratio:1/1.03;
+    overflow:hidden;
+    scroll-snap-align:start;
+    border-right:1px solid rgba(238,228,216,.42);
+    background:#d8cec2;
+  }
+  .instagram-card img { width:100%; height:100%; object-fit:cover; transition:transform .7s var(--ease-song), filter .5s ease; filter:saturate(.82) contrast(1.02); }
+  .instagram-card:hover img { transform:scale(1.035); filter:saturate(.96) contrast(1.03); }
+  .instagram-card.crop-close img { object-position:53% 13%; transform:scale(1.32); }
+  .instagram-card.crop-close:hover img { transform:scale(1.36); }
+  .instagram-card.crop-wide img { object-position:38% 14%; }
+  .instagram-play {
+    position:absolute;
+    left:50%; top:50%; transform:translate(-50%,-50%);
+    width:38px; height:38px;
+    display:grid; place-items:center;
+    border-radius:50%;
+    background:rgba(244,235,221,.78);
+    backdrop-filter:blur(8px);
+    color:var(--ink);
+    font-size:11px;
+    padding-left:2px;
+  }
+  .instagram-arrow {
+    position:absolute;
+    z-index:4;
+    top:50%;
+    transform:translateY(-50%);
+    width:64px;
+    height:64px;
+    border:0;
+    border-radius:50%;
+    background:rgba(248,244,236,.94);
+    color:var(--ink);
+    font-size:27px;
+    cursor:pointer;
+    box-shadow:0 12px 32px rgba(23,21,18,.08);
+    transition:transform .35s var(--ease-song),background .25s ease;
+  }
+  .instagram-arrow:hover { transform:translateY(-50%) scale(1.05); background:#fffaf3; }
+  .instagram-prev { left:18px; }
+  .instagram-next { right:18px; }
+  @media (max-width:900px){
+    .instagram-news { padding:84px 18px 88px; }
+    .instagram-news-heading { padding-bottom:42px; }
+    .instagram-news-heading h2 { font-size:clamp(64px,18vw,112px); }
+    .instagram-news-frame { padding:34px 18px 0; min-height:0; }
+    .instagram-profile { grid-template-columns:52px 1fr; gap:14px; margin-bottom:28px; }
+    .instagram-profile > img { width:52px !important; height:52px !important; }
+    .instagram-profile-copy strong { font-size:22px; }
+    .instagram-open { grid-column:2; justify-self:start; margin-top:8px; }
+    .instagram-carousel { grid-auto-columns:78%; }
+    .instagram-arrow { width:48px; height:48px; font-size:21px; }
+    .instagram-prev { left:8px; }
+    .instagram-next { right:8px; }
+  }
+`;
+document.head.appendChild(instagramStyles);
+
 function wrapTitle(el) {
   if (!el || el.dataset.typeWrapped) return;
   el.dataset.typeWrapped = 'true';
@@ -225,6 +339,19 @@ document.querySelectorAll('.section-kicker').forEach(el=>el.classList.add('type-
 
 const typeObserver = new IntersectionObserver((entries)=>{ entries.forEach(entry=>{ if(!entry.isIntersecting)return; entry.target.classList.add('type-in'); typeObserver.unobserve(entry.target); }); },{threshold:.18,rootMargin:'0px 0px -7% 0px'});
 document.querySelectorAll('.type-title,.type-kicker,.manifesto-copy,.lyric-band').forEach(el=>typeObserver.observe(el));
+
+const instagramCarousel = document.getElementById('instagram-carousel');
+const instagramPrev = document.querySelector('.instagram-prev');
+const instagramNext = document.querySelector('.instagram-next');
+if (instagramCarousel && instagramPrev && instagramNext) {
+  const slideInstagram = (direction) => {
+    const card = instagramCarousel.querySelector('.instagram-card');
+    const amount = card ? card.getBoundingClientRect().width * (window.innerWidth > 900 ? 2 : 1) : instagramCarousel.clientWidth * .8;
+    instagramCarousel.scrollBy({ left: direction * amount, behavior:'smooth' });
+  };
+  instagramPrev.addEventListener('click', () => slideInstagram(-1));
+  instagramNext.addEventListener('click', () => slideInstagram(1));
+}
 
 const preloader=document.getElementById('preloader');
 const minimumLoaderTime=1550;
