@@ -10,6 +10,16 @@
   if(isMain)loadCss('live.css','dqLive');
   loadCss('polish.css','dqPolish');
 
+  if(isMain){
+    const framing=document.createElement('style');
+    framing.textContent=`
+      .portrait-break picture{display:block;width:100%;height:100%}
+      .portrait-break picture img{width:100%;height:100%;object-fit:cover;object-position:center 22%}
+      @media(max-width:767px){.portrait-break picture img{object-position:center 18%}.portrait-caption{gap:18px;align-items:flex-end}}
+    `;
+    document.head.appendChild(framing);
+  }
+
   function cleanPublicCopy(){
     if(!isMain)return;
     const quote=document.querySelector('.press-quote p');
